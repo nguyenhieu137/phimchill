@@ -1,0 +1,262 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    background: #ffffff;
+    border-bottom: 1px solid #d3d3d3;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    .nav-container {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @media (max-width: 1000px) {
+            width: 100%;
+        }
+        .logo {
+            text-align: center;
+            display: flex;
+            justify-items: center;
+            @media (max-width: 1300px) {
+                text-align: unset;
+                flex: 1;
+            }
+            @media (max-width: 1000px) {
+                text-align: unset;
+                flex: 1;
+                padding-left: 30px;
+            }
+
+
+            a {
+                font-family: "Varela Round", sans-serif;
+                font-size: 30px;
+                font-weight: 600;
+                color: #000000;
+                align-items: center;
+                display: flex;
+                .logo-ico{
+                    font-size: 40px;
+                    color: var(--PrimaryColor);
+                }
+            }
+        }
+
+        .menu-container {
+            display: flex;
+            position: relative;
+            justify-content: space-around;
+
+            @media (max-width: 1300px) {
+                display: none;
+                flex: 3;
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+
+                li {
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    &::after {
+                        display: block;
+                        content: '';
+                        border-bottom: solid 3px #ff5d51;
+                        transform: scaleX(0);
+                        transition: transform 250ms ease-in-out;
+                    }
+
+                    &:hover,
+                    &.active {
+                        &::after {
+                            transform: scaleX(1);
+                        }
+                    }
+
+                    a {
+                        font-family: "Varela Round", sans-serif;
+                        display: flex;
+                        text-decoration: none;
+                        color: #000000;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    flex-wrap: wrap;
+    gap: 12px;
+    top: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    opacity: 0;
+    background: #ffffff;
+    width: 600px;
+    max-height: 80vh;
+    transition: all 0.25s ease 0s;
+    visibility: hidden;
+    z-index: 9999;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+    @media (max-width: 1430px) {
+        width: 400px;
+    }
+    @media (max-width: 1280px) {
+        width: 300px;
+    }
+    @media (max-width: 1180px) {
+        width: 300px;
+    }
+    
+}
+
+.submenu-item{
+    width: 120px !important;
+    padding: 10px 14px !important;
+    font-size: 14px;
+
+}
+
+.menu li:hover .submenu {
+    display: flex;
+    opacity: 1;
+    transition: all 0.5s ease 0s;
+    visibility: visible;
+}
+
+.hamburger-icon {
+    color: #000000;
+    font-size: 30px;
+    width: 100px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // Màu overlay và mờ
+    z-index: 9998; // Chọn z-index thấp hơn modal để đảm bảo modal hiển thị trên overlay
+}
+
+.modal {
+    width: 260px;
+    height: 100vh; // Chiều cao là 100% của màn hình
+    background-color: rgb(255, 255, 255); // Màu nền của modal
+    position: fixed; // Đặt modal cố định
+    top: 0;
+    right: 0;
+    z-index: 9999; // Đảm bảo modal hiển thị trên các phần tử khác
+    overflow-y: auto; // Cho phép cuộn nếu nội dung quá dài
+    animation: slideIn 0.5s forwards;
+
+    .modal-content {
+
+
+        .menu-container {
+
+            .menu {
+                padding-bottom: 10px;
+
+                li{
+                    padding: 10px 0;
+                    margin: 0px 20px;
+                    font-size: 14px;
+                    font-weight: 600;
+
+                    &::after {
+                        margin-top: 4px;
+                        display: block;
+                        content: '';
+                        border-bottom: solid 3px #ff5d51;
+                        transform: scaleX(0);
+                        transition: transform 250ms ease-in-out;
+                    }
+                    &:hover,
+                    &.active {
+                        &::after {
+                            transform: scaleX(1);
+                        }
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: #000000;
+                        position: relative;
+                        font-family: "Varela Round", sans-serif;
+
+                        .icon {
+                            font-size: 22px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            position: absolute;
+                            top: -4px;
+                        }
+
+                        .cart-count {
+                            font-size: 12px;
+                            padding: 4px 8px;
+                            background: #ff5144;
+                            color: #fafafa;
+                            text-align: center;
+                            position: absolute;
+                            top: -10px;
+                            right: -33px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    .close {
+        font-size: 40px;
+        color: #ffffff;
+        margin: 20px 20px;
+        background-color: #000000;
+    }
+}
+
+.closing {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+}

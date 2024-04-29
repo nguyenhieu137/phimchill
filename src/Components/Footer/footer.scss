@@ -1,0 +1,32 @@
+.footer-section{
+    width: 100%;
+    bottom: 0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    background-color: #1b1b1b;
+    .footer-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+        .logo{
+            width: 100%;
+            .logo-footer{
+                text-decoration: none;
+                font-size: 30px;
+                color: #fff;
+                align-items: center;
+                display: flex;
+                .logoic-footer{
+                    color: var(--PrimaryColor);
+                    font-size: 40px;
+                }
+            }
+            span{
+                color: #fff;
+                font-size: 14px;
+            }
+        }
+    }
+}
