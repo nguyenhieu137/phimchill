@@ -10,6 +10,9 @@
         flex-direction: row;
         align-items: center;
         width: 80%;
+        @media (max-width: 1024px) {
+            width: 96%;
+        }
         .logo{
             width: 100%;
             .logo-footer{

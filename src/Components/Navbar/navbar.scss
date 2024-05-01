@@ -31,6 +31,11 @@
                 flex: 1;
                 padding-left: 30px;
             }
+            @media (max-width: 768px) {
+                text-align: unset;
+                flex: 1;
+                padding-left: 10px;
+            }
 
 
             a {
