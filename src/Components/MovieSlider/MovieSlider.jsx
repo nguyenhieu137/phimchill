@@ -17,7 +17,6 @@ function MovieSlider() {
             try {
                 const response = await axios.get('https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=3&limit=5');
                 setMovies(response.data.items); 
-                console.log(response.data.items)
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
