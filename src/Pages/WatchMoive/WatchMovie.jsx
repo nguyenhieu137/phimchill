@@ -5,6 +5,7 @@ import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer';
 import ApiService from '../../Services/ApiServices';
 import PuffLoader from "react-spinners/PuffLoader";
+import { FacebookProvider, Comments } from 'react-facebook';
 function WatchMovie() {
     const { slug, episodeSlug } = useParams();
     const [movieDetail, setMovieDetail] = useState(null);
@@ -113,6 +114,13 @@ function WatchMovie() {
 
                         </div>
                     )}
+                    {movieDetail && (
+                        <div className="fb-comment__section">
+                            <FacebookProvider appId="7417768628330111">
+                                <Comments href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`}/>
+                            </FacebookProvider>
+                        </div>
+                    )} 
                 </div>
             }
             <Footer></Footer>

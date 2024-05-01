@@ -9,6 +9,7 @@ import { BsPlayFill } from "react-icons/bs";
 import { FaYoutube } from "react-icons/fa6";
 import { HiOutlinePlayCircle } from "react-icons/hi2";
 import PuffLoader from "react-spinners/PuffLoader";
+import { FacebookProvider, Comments } from 'react-facebook';
 function MovieDetails() {
     const { slug } = useParams();
     const [movieDetail, setMovieDetail] = useState(null);
@@ -146,14 +147,18 @@ function MovieDetails() {
                                 <p>{movieDetail.movie.content}</p>
                             </div>
                             
+                            
+
                         </div>
                         
                     )}
                     {movieDetail && (
                         <div className="fb-comment__section">
-                            <div class="fb-comments" data-href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`} data-width="" data-numposts="5"></div>
+                            <FacebookProvider appId="7417768628330111">
+                                <Comments href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`}/>
+                            </FacebookProvider>
                         </div>
-                    )}
+                    )} 
                 </div>
             }
             <Footer></Footer>
