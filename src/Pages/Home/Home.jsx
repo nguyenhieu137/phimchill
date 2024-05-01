@@ -57,10 +57,6 @@ function Home() {
         fetchTvShows();
     }, []);
 
-    const getPosterUrl = (movie) => {
-        return movie.thumb_url || movie.poster_url;
-    };
-
     // handle loading content
     const [loading , setLoading] = useState(false);
     useEffect(()=>{
@@ -96,15 +92,14 @@ function Home() {
                             {singleMovies.map((movie, index) => (
                                 <Link to={`/movie-info/${movie.slug}`} className={`item ${index === 0 ? 'first' : ''}`} key={index} title={movie.name}>
                                     <img 
-                                        loading='lazy'
-                                        srcSet={`${getPosterUrl(movie)} 1920w, ${getPosterUrl(movie)} 1024w, ${getPosterUrl(movie)} 768w`}
-                                        sizes=" 
-                                                (max-width: 1920px) 10%,
-                                                (max-width: 1024px) 20%,
-                                                (max-width: 768px) 10%, 30,3%
-                                            "
-                                        src={getPosterUrl(movie)}
-                                        alt={movie.name} 
+                                        srcSet={`${movie.thumb_url} 1920w, ${movie.thumb_url} 1024w, ${movie.thumb_url} 768w`}
+                                            sizes=" 
+                                                    (max-width: 1920px) 10%,
+                                                    (max-width: 1024px) 20%,
+                                                    (max-width: 768px) 10%, 30,3%
+                                                "
+                                        src={movie.thumb_url}
+                                        alt={movie.name}
                                     />
                                     <div className="movie-name">
                                         <span>{movie.name} - {movie.origin_name}</span>
@@ -130,15 +125,14 @@ function Home() {
                             {seriesMovies.map((movie, index) => (
                                 <Link to={`/movie-info/${movie.slug}`} className={`item ${index === 0 ? 'first' : ''}`} key={index} title={movie.name}>
                                     <img 
-                                        loading='lazy'
-                                        srcSet={`${getPosterUrl(movie)} 1920w, ${getPosterUrl(movie)} 1024w, ${getPosterUrl(movie)} 768w`}
-                                        sizes=" 
-                                                (max-width: 1920px) 10%,
-                                                (max-width: 1024px) 20%,
-                                                (max-width: 768px) 10%, 30,3%
-                                            "
-                                        src={getPosterUrl(movie)}
-                                        alt={movie.name} 
+                                        srcSet={`${movie.thumb_url} 1920w, ${movie.thumb_url} 1024w, ${movie.thumb_url} 768w`}
+                                            sizes=" 
+                                                    (max-width: 1920px) 10%,
+                                                    (max-width: 1024px) 20%,
+                                                    (max-width: 768px) 10%, 30,3%
+                                                "
+                                        src={movie.thumb_url}
+                                        alt={movie.name}
                                     />
                                     <div className="movie-name">
                                         <span>{movie.name} - {movie.origin_name}</span>
@@ -164,15 +158,14 @@ function Home() {
                             {cartoonMovies.map((movie, index) => (
                                 <Link to={`/movie-info/${movie.slug}`} className={`item ${index === 0 ? 'first' : ''}`} key={index} title={movie.name}>
                                     <img 
-                                        loading='lazy'
-                                        srcSet={`${getPosterUrl(movie)} 1920w, ${getPosterUrl(movie)} 1024w, ${getPosterUrl(movie)} 768w`}
-                                        sizes=" 
-                                                (max-width: 1920px) 10%,
-                                                (max-width: 1024px) 20%,
-                                                (max-width: 768px) 10%, 30,3%
-                                            "
-                                        src={getPosterUrl(movie)}
-                                        alt={movie.name} 
+                                        srcSet={`${movie.thumb_url} 1920w, ${movie.thumb_url} 1024w, ${movie.thumb_url} 768w`}
+                                            sizes=" 
+                                                    (max-width: 1920px) 10%,
+                                                    (max-width: 1024px) 20%,
+                                                    (max-width: 768px) 10%, 30,3%
+                                                "
+                                        src={movie.thumb_url}
+                                        alt={movie.name}
                                     />
                                     <div className="movie-name">
                                         <span>{movie.name} - {movie.origin_name}</span>
@@ -197,15 +190,14 @@ function Home() {
                             {tvShows.map((movie, index) => (
                                 <Link to={`/movie-info/${movie.slug}`} className={`item ${index === 0 ? 'first' : ''}`} key={index} title={movie.name}>
                                     <img 
-                                        loading='lazy'
-                                        srcSet={`${getPosterUrl(movie)} 1920w, ${getPosterUrl(movie)} 1024w, ${getPosterUrl(movie)} 768w`}
-                                        sizes=" 
-                                                (max-width: 1920px) 10%,
-                                                (max-width: 1024px) 20%,
-                                                (max-width: 768px) 10%, 30,3%
-                                            "
-                                        src={getPosterUrl(movie)}
-                                        alt={movie.name} 
+                                        srcSet={`${movie.thumb_url} 1920w, ${movie.thumb_url} 1024w, ${movie.thumb_url} 768w`}
+                                            sizes=" 
+                                                    (max-width: 1920px) 10%,
+                                                    (max-width: 1024px) 20%,
+                                                    (max-width: 768px) 10%, 30,3%
+                                                "
+                                        src={movie.thumb_url}
+                                        alt={movie.name}
                                     />
                                     <div className="movie-name">
                                         <span>{movie.name} - {movie.origin_name}</span>

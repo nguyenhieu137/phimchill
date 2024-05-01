@@ -113,9 +113,6 @@ function MainPage() {
         setCurrentPage(1); // Đặt currentPage về 1 khi chuyển tab
     }, [location.pathname]);
 
-    const getPosterUrl = (movie) => {
-        return movie.thumb_url || movie.poster_url;
-    };
     const minPagesToShow = 6;
     const halfMinPagesToShow = Math.floor(minPagesToShow / 2);
     const startPage = Math.max(1, Math.min(currentPage - halfMinPagesToShow, tabTotalPages - minPagesToShow + 1));
@@ -155,13 +152,13 @@ function MainPage() {
                         {movies.map((movie, index) => (
                             <Link to={`/movie-info/${movie.slug}`} className={`item ${index === 0 ? 'first' : ''}`} key={index} title={movie.name}>
                                 <img 
-                                    srcSet={`${getPosterUrl(movie)} 1920w, ${getPosterUrl(movie)} 1024w, ${getPosterUrl(movie)} 768w`}
+                                    srcSet={`${movie.thumb_url} 1920w, ${movie.thumb_url} 1024w, ${movie.thumb_url} 768w`}
                                         sizes=" 
                                                 (max-width: 1920px) 10%,
                                                 (max-width: 1024px) 20%,
                                                 (max-width: 768px) 10%, 30,3%
                                             "
-                                    src={getPosterUrl(movie)}
+                                    src={movie.thumb_url}
                                     alt={movie.name}
                                 />
                                 <div className="movie-name">
