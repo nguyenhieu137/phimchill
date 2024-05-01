@@ -145,7 +145,13 @@ function MovieDetails() {
                                 <span className=''>Nội dung phim</span>
                                 <p>{movieDetail.movie.content}</p>
                             </div>
-
+                            
+                        </div>
+                        
+                    )}
+                    {movieDetail && (
+                        <div className="fb-comment__section">
+                            <div class="fb-comments" data-href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`} data-width="" data-numposts="5"></div>
                         </div>
                     )}
                 </div>

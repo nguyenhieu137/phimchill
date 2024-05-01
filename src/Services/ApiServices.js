@@ -122,6 +122,23 @@ const ApiService = {
         console.error("Error fetching movies:", error);
         throw error;
         }
+    },
+
+    getMoviebyKeyword: async ({keyword, limit}) => {
+        try {
+            const response = await axios.get(
+              `https://phimapi.com/v1/api/tim-kiem?keyword=${keyword}&limit=${limit}`
+            );
+            const titlePage = response.data.data.titlePage;
+            const movies = response.data.data.items.map((movie) => ({
+                ...movie,
+                thumb_url: `https://img.phimapi.com/${movie.thumb_url}`,
+            }));
+            return { movies, titlePage };
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+            throw error;
+        }
     }
 };
 

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import { RiMovie2Fill } from "react-icons/ri";
+import { IoSearchOutline } from "react-icons/io5";
+import { useSearch } from '../../SearchContext';
 import "./navbar.scss";
 function Navbar() {
   // Lấy đường dẫn hiện tại
@@ -14,7 +16,9 @@ function Navbar() {
   const [isClosing, setIsClosing] = useState(false);
   const [categories, setCategories] = useState([]);
   const [nations, setNations] = useState([]);
-
+  const { searchKeyword, setSearchKeyword } = useSearch();
+  const [inputValue, setInputValue] = useState('');
+  const navigate = useNavigate();
   const handleOpenModal = () => {
     setIsModalOpen(true);
     document.body.style.overflow = "hidden";
@@ -36,6 +40,19 @@ function Navbar() {
       document.body.style.overflow = "auto";
     }, 200); 
   };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if (inputValue.trim() !== '') {
+      setSearchKeyword(inputValue.trim());
+      localStorage.setItem('searchKeyword', inputValue.trim());
+      navigate('/search-page');
+    }
+  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -133,9 +150,23 @@ function Navbar() {
                 ))}
               </ul>
             </li>
+          </ul>        
+        </div>
 
-          </ul>
-     
+        <div className="search-bar">
+           <input 
+              className="search-ip" 
+              type="text" 
+              placeholder="Bạn muốn tìm phim gì ?"
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyPress={(event) => {
+                if (event.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
+            />
+          <IoSearchOutline className="ic-search"></IoSearchOutline>
         </div>
         {isSmallScreen && (
           <RxHamburgerMenu className="hamburger-icon" onClick={handleOpenModal}></RxHamburgerMenu>
@@ -149,6 +180,21 @@ function Navbar() {
           <IoCloseOutline className="close" onClick={handleCloseModal}></IoCloseOutline>
           <div className="modal-content">
             <div className="menu-container">
+              <div className="search-bar">
+                <input 
+                  className="search-ip" 
+                  type="text" 
+                  placeholder="Bạn muốn tìm phim gì ?"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onKeyPress={(event) => {
+                    if (event.key === 'Enter') {
+                      handleSearch();
+                    }
+                  }}
+                />
+                <IoSearchOutline className="ic-search"></IoSearchOutline>
+              </div>
               <ul className="menu">
                 <li className={location.pathname === '/' ? 'active' : ''}>
                   <Link to='/'>Trang chủ</Link>
