@@ -156,7 +156,7 @@ function MovieDetails() {
                     {movieDetail && (
                         <div className="fb-comment__section">
                             <FacebookProvider appId="7417768628330111">
-                                <Comments href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`}/>
+                                <Comments href={`https://phimchilla.vercel.app/movie-info/${movieDetail.movie.slug}`} data-width="100%"/>
                             </FacebookProvider>
                         </div>
                     )} 
