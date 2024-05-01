@@ -150,3 +150,17 @@
         text-align: center;
     }
 }
+
+.fb-comment__section {
+    background: #fff;
+    width: 1000px;
+
+    @media (max-width: 1024px) {
+        width: 90%;
+        ;
+    }
+
+    .fb-comments {
+        width: 1000px;
+    }
+}
