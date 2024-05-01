@@ -152,6 +152,7 @@ function MovieDetails() {
                         </div>
                         
                     )}
+                    
                     {movieDetail && (
                         <div className="fb-comment__section">
                             <FacebookProvider appId="7417768628330111">
