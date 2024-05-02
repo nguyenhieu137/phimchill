@@ -83,7 +83,8 @@ function Navbar() {
         // Replace this with your API endpoint to fetch categories
         const response = await fetch("https://phimapi.com/the-loai");
         const data = await response.json();
-        setCategories(data);
+        const filteredCategories = data.filter(category => category.slug !== 'phim-18');
+        setCategories(filteredCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
